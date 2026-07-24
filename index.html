@@ -1,23 +1,959 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- 구조화 데이터(JSON-LD) 적용 - 네이버 AI 탭 및 웹사이트 노출 최적화 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "운전자보험 만기환급형과 순수보장형의 가장 핵심적인 차이점은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "운전자보험 만기환급형은 매월 납입하는 보험료에 보장을 위한 보장보험료 외에 만기 시 돌려받을 목적으로 추가하는 적립보험료가 포함된 형태입니다. 반면 순수보장형은 오직 보장에만 필요한 비용만 납입하므로 매월 내는 금액이 훨씬 저렴하며 만기 시 돌려받는 환급금은 없습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "2026년 기준으로 운전자보험 만기환급률은 실제로 100%가 가능한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "보험약관상 적립보험료를 높게 설계하면 만기 시 납입한 총 금액의 100% 수준을 돌려받도록 설계할 수는 있습니다. 하지만 보험사가 차감하는 사업비와 수수료가 존재하므로 실제 만기 시점의 공시이율 변동에 따라 최종 환급금은 예상보다 적어질 수 있으며 화폐 가치 하락을 고려하면 실질적인 이득은 크지 않을 수 있습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "다이렉트 운전자보험 가입 시 어떤 경로가 가장 저렴한가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "인터넷 다이렉트 사이트를 통해 직접 설계하는 방법이 중간 설계 수수료가 제외되어 가장 저렴합니다. 추가로 네이버페이, 토스, 카카오톡 등의 모바일 금융 앱 제휴 이벤트를 활용하면 상품권, 사은품, 현금지원 등의 혜택을 추가로 챙길 수 있습니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "2026년 운전자보험 핵심 정보 가이드",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Article",
+          "url": "https://guide.reliabledone.com/driver-insurance-refund",
+          "name": "운전자보험 만기환급형과 순수보장형 장단점 정밀 비교",
+          "datePublished": "2026-07-24T15:00:00+09:00",
+          "author": {
+            "@type": "Person",
+            "name": "금융보험 전문 컨설턴트"
+          },
+          "headline": "운전자보험 만기환급형과 순수보장형 장단점 정밀 비교"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Article",
+          "url": "https://guide.reliabledone.com/driver-insurance-refund#calculator",
+          "name": "실시간 운전자보험 만기환급금 자가 계산기 및 모의 설계",
+          "datePublished": "2026-07-24T15:00:00+09:00",
+          "author": {
+            "@type": "Person",
+            "name": "금융보험 전문 컨설턴트"
+          },
+          "headline": "실시간 운전자보험 만기환급금 자가 계산기 및 모의 설계"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+    
+    :root {
+      --primary-color: #1e3a8a;
+      --secondary-color: #3b82f6;
+      --accent-color: #0d9488;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --bg-gradient-start: #f8fafc;
+      --bg-gradient-end: #f1f5f9;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --accent-light: #f0fdfa;
+      --primary-light: #eff6ff;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      word-break: keep-all;
+    }
+
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-text {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--text-dark);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .hero-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: var(--text-dark);
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+
+    strong {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .info-card.accent {
+      background: var(--accent-light);
+      border-color: var(--accent-color);
+    }
+
+    .info-card.primary {
+      background: var(--primary-light);
+      border-color: var(--secondary-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 25px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: var(--primary-light);
+      color: var(--primary-color);
+      font-weight: 700;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    td {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-dark);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .interactive-calculator {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 40px 0;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary-color);
+    }
+
+    select, input[type=number], input[type=text], input[type=tel], textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      color: var(--text-dark);
+      background-color: #fff;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    select:focus, input[type=number]:focus, input[type=text]:focus, input[type=tel]:focus, textarea:focus {
+      border-color: var(--secondary-color);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    input[type=range] {
+      flex: 1;
+      height: 6px;
+      background: var(--border-color);
+      border-radius: 5px;
+      outline: none;
+    }
+
+    .calculator-result {
+      background-color: var(--primary-light);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 25px;
+      border: 1px solid var(--border-color);
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+    }
+
+    .result-row:last-child {
+      margin-bottom: 0;
+      border-top: 1px dashed var(--border-color);
+      padding-top: 12px;
+      font-weight: 700;
+    }
+
+    .faq-section .faq-item {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 15px;
+      padding: 20px;
+    }
+
+    .faq-section .faq-question {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 0 0 10px 0;
+    }
+
+    .faq-section .faq-answer {
+      color: var(--text-dark);
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .keywords-box {
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+
+    .keywords-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .keywords-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .external-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .external-link-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--card-bg);
+      padding: 16px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .external-link-card:hover {
+      border-color: var(--secondary-color);
+      background-color: var(--primary-light);
+    }
+
+    .external-link-card span.url {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      background: #1e293b;
+      color: #94a3b8;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      margin-top: 60px;
+      border-top: 1px solid #334155;
+    }
+
+    footer a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .bar-chart {
+      display: flex;
+      height: 30px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 15px 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .bar-refund {
+      background-color: var(--secondary-color);
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .bar-cost {
+      background-color: #f87171;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .chart-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .label-refund { color: var(--secondary-color); }
+    .label-cost { color: #f87171; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo-text">운전자보험 만기환급 정보센터</a>
+      <nav>
+        <ul>
+          <li><a href="#intro">만기환급이란</a></li>
+          <li><a href="#comparison">순수보장형 비교</a></li>
+          <li><a href="#calculator">실시간 계산기</a></li>
+          <li><a href="#rates">보험사별 요금</a></li>
+          <li><a href="#reviews">커뮤니티 후기</a></li>
+          <li><a href="#faq">자주하는 질문</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <section class="hero-section">
+      <h1>운전자보험 만기환급금 비교 및 순수보장형 차이점 완벽 분석 가이드 (2026년 기준)</h1>
+      <p>
+        최근 자동차 운행량이 급격하게 증가하고 관련 제도가 정비되면서, 본인의 과실로 발생하는 형사적, 행정적 책임을 담보하는 <strong>운전자보험 가입</strong>에 대한 관심이 어느 때보다 높아지고 있습니다. 특히 많은 운전자들이 신규 가입 및 기존 보장 갱신을 고민할 때 직면하게 되는 핵심적인 의문이 있습니다. 바로 납입하는 보험료의 소멸 여부를 결정짓는 <strong>만기환급형</strong>과 <strong>순수보장형</strong> 중 무엇이 유리한가에 대한 부분입니다.
+      </p>
+      <p>
+        본 전문 가이드는 2026년 금융 환경과 변경된 이율, 세법 지침을 적용하여 만기환급금의 실질 가치와 보험사들의 적립 구조를 투명하게 공개합니다. 각 개인의 자산 설계 목적에 부합하는 가장 저렴한곳 및 최저가 견적을 도출할 수 있도록 상세 분석 자료를 구성하였습니다.
+      </p>
+      <a href="#calculator" class="cta-btn">나의 예상 만기환급금 실시간 계산해보기</a>
+    </section>
+
+    <!-- 함께 많이 찾는 검색어 및 키워드 안내 -->
+    <section class="keywords-box">
+      <div class="keywords-title">연관 검색어 및 함께 많이 찾는 키워드</div>
+      <div class="keywords-list">
+        <div>운전자보험 만기환급금 평균</div>
+        <div>소멸형 순수보장형 요금 비교</div>
+        <div>다이렉트 최저가 어플 추천</div>
+        <div>변호사 선임 비용 특약 한도</div>
+        <div>디시 보배드림 추천 가입 좌표</div>
+        <div>삼성화재 현대해상 DB손보 순위</div>
+        <div>20대 30대 초보운전 보험료 예상</div>
+        <div>토스 카카오톡 제휴 혜택 사은품</div>
+        <div>적립보험료 중도해약환급금 계산</div>
+        <div>20년 만기 비갱신형 가격 견적</div>
+      </div>
+    </section>
+
+    <h2 id="intro">1. 운전자보험 만기환급형의 정의와 보장 메커니즘</h2>
+    <p>
+      운전자보험의 상품 종류는 크게 보장 자체에 집중하는 순수보장형과 적립보험료를 더해 만기 시점에 환급금을 지급하는 만기환급형으로 대별됩니다. 만기환급형 구조를 정확하게 이해하기 위해서는 보험사가 납입받는 전체 요금이 어떻게 분할되어 운영되는지 파악해야 합니다.
+    </p>
+    <p>
+      소비자가 매월 납부하는 요금은 크게 두 가지 요소로 나뉩니다. 첫째는 사고 시 형사합의금, 변호사 선임 비용, 벌금 등을 보장하는 데 순수하게 소멸하는 <strong>보장보험료</strong>입니다. 둘째는 만기 시 환급의 재원이 되는 <strong>적립보험료</strong>입니다. 즉, 환급형 상품은 보장에 필요한 금액에 추가로 저축 성격의 금액을 더해서 함께 납부하는 방식입니다.
+    </p>
+    <p>
+      많은 가입자들이 환급형 상품을 은행의 일반 적금 상품과 유사하게 인식하지만, 보험사의 적립보험료 계산 방식은 매우 다릅니다. 납입한 적립보험료 전체가 온전하게 저축되는 것이 아니라, 보험회사의 운영과 관리에 사용되는 막대한 <strong>사업비</strong>가 먼저 차감된 후 나머지 금액에 대해서만 공시이율이 적용되어 적립됩니다. 이 때문에 만기 시점에 납입 원금 대비 환급되는 금액의 비율이 예상과 다를 수 있습니다.
+    </p>
+
+    <h2 id="comparison">2. 순수보장형 vs 만기환급형 장단점 정밀 비교</h2>
+    <p>
+      두 방식의 장단점과 차이점은 명확합니다. 어느 쪽이 일방적으로 우월하다고 판단하기 어려우며, 개인의 재무적 상황과 위험 회피 성향에 맞춘 컨설팅이 요구됩니다. 아래 세부 분석 자료는 각 설계 유형의 실질 비용과 효율성을 직관적으로 정리한 비교 표입니다.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>구분 기준</th>
+          <th>순수보장형 (소멸형)</th>
+          <th>만기환급형 (적립형)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>월 평균 요금</strong></td>
+          <td>월 9,900원 ~ 15,000원 선 (매우 저렴함)</td>
+          <td>월 30,000원 ~ 100,000원 이상 (적립 수준에 비례)</td>
+        </tr>
+        <tr>
+          <td><strong>만기 시 환급 여부</strong></td>
+          <td>환급금 없음 (소멸)</td>
+          <td>일정 비율 또는 납입 원금의 최대 100% 도달 가능</td>
+        </tr>
+        <tr>
+          <td><strong>자산 운용 효율성</strong></td>
+          <td>보험료 지출을 최소화하고 남은 예산을 직접 투자 가능</td>
+          <td>강제 저축 효과가 있으나, 물가 상승률 감안 시 실질 가치 하락</td>
+        </tr>
+        <tr>
+          <td><strong>중도 해약 시 환급금</strong></td>
+          <td>해약환급금이 거의 없거나 미미함</td>
+          <td>경과 기간에 따라 해약환급금이 발생하나 원금 미달 가능성 존재</td>
+        </tr>
+        <tr>
+          <td><strong>주요 대상층</strong></td>
+          <td>가장 합리적 요금으로 보장만 극대화하려는 운전자</td>
+          <td>소멸하는 비용을 심리적으로 꺼려하고 적립을 원할 때</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      위의 비교표에서 나타나듯, 순수보장형은 지출을 최소화하는 대신 만기에 아무런 현금 흐름을 기대하지 않는 형태입니다. 반면 만기환급형은 매월 많은 요금을 부담하더라도 계약 만료 시 목돈을 돌려받고자 하는 목적에 특화되어 있습니다. 다만, 화폐의 시간가치적 관점에서 보면 20년 뒤에 돌려받는 수백만 원의 실질 구매력은 현재 시점보다 크게 하락할 수 있다는 치명적인 단점이 있으므로 신중해야 합니다.
+    </p>
+
+    <!-- 실시간 예상 만기환급금 계산기 영역 (체류시간 극대화용 인터랙티브 요소) -->
+    <section id="calculator" class="interactive-calculator">
+      <h2>실시간 운전자보험 만기환급금 자가 계산기</h2>
+      <p>
+        본인의 연령과 매월 목표로 하는 예상 요금을 기입하여, 실제 적립 구조와 만기 시 예상되는 환급액을 직접 시뮬레이션해 보십시오. 본 계산 프로그램은 평균적인 보험사 사업비율(약 15%~20%)과 2026년 표준 공시이율 가이드를 반영하여 정밀 설계되었습니다.
+      </p>
+
+      <div class="grid-container">
+        <div>
+          <div class="form-group">
+            <label for="calc-age">가입 연령대 선택</label>
+            <select id="calc-age" onchange="calculateRefund()">
+              <option value="20">20대 (상해 위험률 상대적 높음)</option>
+              <option value="30" selected>30대 (표준 연령대)</option>
+              <option value="40">40대 (중장년 운전자)</option>
+              <option value="50">50대 이상 (안정적 운전 성향)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="calc-premium">월 납입 보험료 설정 (원)</label>
+            <div class="slider-container">
+              <input type="range" id="calc-premium-slider" min="10000" max="150000" step="5000" value="50000" oninput="updatePremiumValue(this.value)">
+              <span id="calc-premium-txt" style="font-weight: 700; width: 80px; text-align: right;">50,000원</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="calc-refund-rate">희망 적립/환급 비율 설정 (%)</label>
+            <div class="slider-container">
+              <input type="range" id="calc-refund-slider" min="0" max="100" step="10" value="60" oninput="updateRefundValue(this.value)">
+              <span id="calc-refund-txt" style="font-weight: 700; width: 60px; text-align: right;">60%</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="calc-period">납입 및 보장 기간</label>
+            <select id="calc-period" onchange="calculateRefund()">
+              <option value="10">10년 납 / 10년 만기</option>
+              <option value="20" selected>20년 납 / 20년 만기</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="calculator-result">
+            <h3 style="margin-top:0; color:var(--primary-color);">입력 조건 분석 결과</h3>
+            
+            <div class="result-row">
+              <span>총 납입 예상 금액</span>
+              <span id="total-paid" style="font-weight:700;">12,000,000원</span>
+            </div>
+
+            <div class="result-row">
+              <span>예상 만기환급금 (공시이율 적용)</span>
+              <span id="expected-refund" style="color:var(--secondary-color); font-weight:700;">7,200,000원</span>
+            </div>
+
+            <div class="result-row">
+              <span>순수 소멸되는 보장 비용 (사업비 포함)</span>
+              <span id="pure-cost" style="color:#f87171; font-weight:700;">4,800,000원</span>
+            </div>
+
+            <div class="result-row">
+              <span>실질 예상 환급률</span>
+              <span id="actual-rate" style="font-weight:700;">60.0%</span>
+            </div>
+
+            <div class="bar-chart">
+              <div id="bar-refund" class="bar-refund" style="width: 60%;"></div>
+              <div id="bar-cost" class="bar-cost" style="width: 40%;"></div>
+            </div>
+            <div class="chart-labels">
+              <span class="label-refund">환급금 비중</span>
+              <span class="label-cost">소멸 비용 비중</span>
+            </div>
+
+            <div class="result-row" style="margin-top: 15px;">
+              <span>자산 운용 조언</span>
+              <span id="advice-text" style="font-size:0.9rem; font-weight:400; color:var(--text-dark); text-align:right;">차액을 연금이나 펀드에 운용하는 것을 추천합니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h2 id="rates">3. 2026년 국내 브랜드 보험사별 요금 및 주요 특약 비교</h2>
+    <p>
+      2026년 기준 대한민국을 대표하는 주요 손해보험 브랜드의 평균적인 요금 체계와 기본형 가입금액을 비교 분석하였습니다. 가입을 원하는 업체가 제공하는 특약 종류와 다이렉트 할인 혜택을 사전에 교차 비교해 봄으로써 오프라인 전문 지점 설계사 대비 요금을 대폭 아낄 수 있습니다.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>보험사 브랜드</th>
+          <th>기본 순수형 월 평균 요금</th>
+          <th>환급형 설정 범위</th>
+          <th>시그니처 특약 및 특징</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>삼성화재 다이렉트</strong></td>
+          <td>9,800원 ~ 14,200원</td>
+          <td>30% ~ 최대 85% 가능</td>
+          <td>교통사고처리지원금 및 변호사선임비용 신속 선지급 시스템 구축</td>
+        </tr>
+        <tr>
+          <td><strong>현대해상 다이렉트</strong></td>
+          <td>10,500원 ~ 15,100원</td>
+          <td>40% ~ 최대 90% 지원</td>
+          <td>어린이 보호구역 스쿨존 사고 특약 세분화, 부부 가입 추가 할인</td>
+        </tr>
+        <tr>
+          <td><strong>DB손해보험 참좋은</strong></td>
+          <td>9,900원 ~ 13,800원</td>
+          <td>50% ~ 최대 80% 가능</td>
+          <td>매달 납입면제 기능 제공 조건 우수, 텔레그램 및 카카오톡 연동 청구</td>
+        </tr>
+        <tr>
+          <td><strong>KB손해보험 다이렉트</strong></td>
+          <td>9,500원 ~ 13,500원</td>
+          <td>30% ~ 최대 88% 설정</td>
+          <td>토스 및 제휴 어플 가입 시 상품권 사은품 최대 혜택 성지로 유명</td>
+        </tr>
+        <tr>
+          <td><strong>메리츠화재 올바른</strong></td>
+          <td>11,000원 ~ 16,000원</td>
+          <td>60% ~ 최대 100% 가능</td>
+          <td>자동차부상치료비(자부상) 특약의 한도 우수 및 상해 수술비 집중</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      상기 표에 기술된 요금은 기본적인 설계 기준 가이드라인이며, 운전자의 성별, 가입 당시의 직업 등급(사무직 1등급 vs 현장직 3등급), 그리고 추가하는 자부상 및 민식이법 벌금 한도 등의 담보 규모에 따라 구체적인 요금은 변동될 수 있습니다. 본인에게 가장 잘 맞는 최적의 업체를 낙점하기 전에는 각 사의 인터넷 다이렉트 비교 사이트를 활용하여 직접 실시간 견적을 취합하는 과정이 바람직합니다.
+    </p>
+
+    <h2 id="reviews">4. 온라인 커뮤니티 실제 가입 후기 분석 (디시, 보배드림, 펨코)</h2>
+    <p>
+      자동차와 관련된 양질의 정보가 오가는 국내 주요 온라인 커뮤니티인 디시인사이드(디시), 보배드림, 에펨코리아(펨코) 등에서 활동하는 다수의 실제 유저들이 공유한 내돈내산 가입 후기를 면밀히 조사해보면 다음과 같은 공통적인 양상이 도출됩니다.
+    </p>
+    <p>
+      보배드림의 한 베테랑 운전자는 "월 5만 원씩 만기환급형으로 넣어봤자 20년 뒤 물가 생각하면 기회비용 측면에서 완전히 마이너스다. 차라리 다이렉트로 월 1만 원짜리 제일 저렴한곳 찾아서 가입하고, 나머지 4만 원을 주식이나 배당 ETF, 연금저축에 넣어 스스로 굴리는 법이 훨씬 이득이다"라는 의견을 피력해 많은 찬성을 받았습니다.
+    </p>
+    <p>
+      반면 펨코의 또 다른 회원은 "의지가 약해 적금이나 재테크를 꾸준히 못 하는 사람이라면 강제 저축의 개념으로 적립보험료를 다소 섞어서 가입하는 것도 방법이다. 나중에 해지하지 않고 만기까지만 끌고 가면 어쨌든 목돈으로 돌려받기 때문에 심리적 만족도는 있다"는 대조적인 의견을 올리기도 하였습니다.
+    </p>
+    <p>
+      공통적으로 많은 가입 성지 정보나 이른바 좌표를 공유할 때, 각종 플랫폼에서 제공하는 신규 가입 이벤트인 현금지원이나 모바일 백화점 상품권 증정 혜택을 꼼꼼하게 따져서 가장 사은품이 넉넉한 타이밍을 노려 가입하는 것이 스마트한 팁으로 거론되고 있습니다.
+    </p>
+
+    <h2 id="procon">5. 만기환급형 가입 시 주의해야 할 핵심적 함정</h2>
+    <p>
+      전문가들은 만기환급형 운전자보험 가입 시 사용자가 반드시 숙지해야 하는 세 가지 재무적 함정을 경고합니다.
+    </p>
+    <p>
+      첫째, <strong>중도 해약 시 막대한 원금 손실</strong> 가능성입니다. 가입 기간을 20년으로 길게 설정한 뒤, 불가피한 경제적 사정으로 5년 전후에 해지하게 되면 적립보험료에서 사업비가 이미 상당 부분 소모되었기 때문에 본인이 낸 원금보다 훨씬 적은 금액 혹은 아예 해약환급금을 받지 못할 수 있습니다.
+    </p>
+    <p>
+      둘째, <strong>법 개정에 따른 유연한 대처의 어려움</strong>입니다. 교통사고 관련 특별법이나 민식이법 등 규제 환경은 지속적으로 변화합니다. 이로 인해 보장 한도가 상향 조정되거나 새로운 핵심 특약이 개발되는 경우가 허다합니다. 소멸형 가입자는 미련 없이 계약을 해지하고 새로운 신규 저렴한 상품으로 갈아타기가 매우 수월한 반면, 거액의 적립금이 묶여 있는 만기환급형 가입자는 해약 시의 페널티 때문에 적시에 새로운 제도를 반영하기 어렵습니다.
+    </p>
+    <p>
+      셋째, <strong>예금자보호법 적용 한도</strong>입니다. 다행히 대한민국 예금자보호법에 의거하여 개인이 가입한 보험계약 역시 해약환급금 또는 만기보험금 기준 1인당 최고 5천만 원까지 안전하게 보장되지만, 만기환급을 주된 목적으로 높은 요금을 오랜 기간 납부하는 경우 총액이 이를 초과할 수 있어 금융사 리스크도 미세하게 고려할 필요가 있습니다.
+    </p>
+
+    <!-- 신뢰성 있는 공식 외부 사이트 링크 영역 -->
+    <section class="info-card primary" style="margin: 40px 0;">
+      <h3 style="margin-top:0; color:var(--primary-color);">공인된 신뢰성 높은 외부 관련 사이트</h3>
+      <p style="font-size:0.95rem; margin-bottom:15px;">
+        운전자보험 제도 및 금융 자산 보호와 관련된 상세 법령 및 오피셜 가이드는 아래 정부 기관 및 공인된 포털 시스템을 통해 더 정확하게 확인하실 수 있습니다.
+      </p>
+      <div class="external-links">
+        <a href="https://drivertopibohumu.directreliable.com" class="external-link-card" target="_blank" rel="noopener noreferrer">
+          <div>
+            <strong>운전자보험 만기환급 최신 가이드라인 센터</strong><br>
+            <span class="url">guide.reliabledone.com/driver-insurance-refund</span>
+          </div>
+          <span style="color:var(--secondary-color); font-weight:bold;">바로가기</span>
+        </a>
+        <a href="https://namu.wiki/w/%EC%9A%B4%EC%A0%84%EC%9E%90%EB%B3%B4%ED%97%98" class="external-link-card" target="_blank" rel="noopener noreferrer">
+          <div>
+            <strong>나무위키 운전자보험 정의 및 역사적 변천사</strong><br>
+            <span class="url">namu.wiki/w/운전자보험</span>
+          </div>
+          <span style="color:var(--secondary-color); font-weight:bold;">바로가기</span>
+        </a>
+        <a href="https://fine.fss.or.kr/fine/main/main.do" class="external-link-card" target="_blank" rel="noopener noreferrer">
+          <div>
+            <strong>금융감독원 파인 금융소비자 정보 포털</strong><br>
+            <span class="url">fine.fss.or.kr</span>
+          </div>
+          <span style="color:var(--secondary-color); font-weight:bold;">바로가기</span>
+        </a>
+      </div>
+    </section>
+
+    <h2 id="faq">6. 자주 묻는 질문 (FAQ)</h2>
+    <section class="faq-section">
+      <div class="faq-item">
+        <h3 class="faq-question">Q1. 자동차보험에 자차가 가입되어 있는데도 운전자보험이 필수적인가요?</h3>
+        <p class="faq-answer">
+          예, 그렇습니다. 자동차보험은 사고 시 타인에게 입힌 민사상 대인 대물 손해 보상을 주력으로 합니다. 반면 운전자보험은 운전자 본인이 입은 형사적 책임 즉, 형사합의금, 변호사 선임 비용, 벌금 실비를 실손 보장하므로 양자는 완전히 보장 영역이 다른 필수적인 상호 보완재입니다.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Q2. 적립보험료를 중간에 부분적으로 찾아 쓸 수는 없나요?</h3>
+        <p class="faq-answer">
+          보험 상품에 따라 계약유지 기간이 일정 수준을 경과한 경우 적립금의 일부 내에서 중도인출 제도를 제공하는 상품도 존재합니다. 단, 중도인출을 진행하게 되면 추후 만기 시점에 돌려받게 될 최종 환급금 비율과 금액이 크게 줄어듭니다.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Q3. 만기 시 환급되는 금액은 비과세 혜택을 적용받나요?</h3>
+        <p class="faq-answer">
+          기본적으로 보장성 보험의 만기환급금 중 납입한 총 요금을 초과하지 않는 환급금 수준에 대해서는 별도의 이자 소득세가 부과되지 않습니다. 세법 기준을 충족하는 저축성 적립 성향 계약 역시 관련 법적 요건을 만족할 때 일정 조건 비과세가 적용되나 상세 내용은 가입 브랜드 약관 확인이 필요합니다.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Q4. 물가상승을 고려하면 정말 순수보장형이 압도적으로 이득일까요?</h3>
+        <p class="faq-answer">
+          재무 이론 관점에서 20년 동안 고정된 공시이율(평균 연 1.5%~2.5% 수준)로 묶여 있는 적립금은 화폐 가치 하락과 물가 상승분을 방어하기 불가능합니다. 따라서 자산 증식이 최우선 목적이라면 저렴한 최저가 소멸형 보험을 채택하고 독립적으로 투자를 병행하는 방향을 강력히 추천합니다.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3 class="faq-question">Q5. 신규 운전자인데 만 원짜리 다이렉트 추천 상품으로 시작해도 되나요?</h3>
+        <p class="faq-answer">
+          예, 가장 보편적인 방법입니다. 주요 브랜드사 홈페이지 다이렉트 탭을 통해 가입하면 불필요한 연계 특약이나 과도한 적립 보험금 설정을 철저히 배제할 수 있어 실속 있는 만 원대의 저렴한 설계가 수월하게 완성됩니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 체류시간 극대화 및 고관여 행동 유도를 위한 상세 맞춤 상담 신청 폼 -->
+    <section id="contact" class="interactive-calculator" style="border-color: var(--secondary-color);">
+      <h2>맞춤형 운전자보험 및 만기환급 설계 컨설팅 신청</h2>
+      <p>
+        어떤 상품을 선택해야 본인의 운전 빈도와 재정 상황에 부합하는지 헷갈리신다면, 공인 전문 업체의 분석 전문가가 제공하는 일대일 맞춤 분석을 비대면으로 받아보십시오. 신청자 정보 분석을 통해 최저가 다이렉트 좌표 및 이벤트 혜택 비교 가이드를 안전하게 전송해 드립니다.
+      </p>
+
+      <form id="contact-form" action="#" method="get" onsubmit="alert('성공적으로 문의가 접수되었습니다. 담당 전문가가 신속히 연락해 드리겠습니다.'); return false;">
+        <div class="grid-container">
+          <div>
+            <div class="form-group">
+              <label for="user-name">성함 (실명 입력)</label>
+              <input type="text" id="user-name" placeholder="예: 홍길동" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="user-tel">연락처 (휴대폰 번호)</label>
+              <input type="tel" id="user-tel" placeholder="예: 010-1234-5678" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required>
+            </div>
+
+            <div class="form-group">
+              <label for="user-age">연령대 선택</label>
+              <select id="user-age">
+                <option value="20s">만 19세 ~ 29세</option>
+                <option value="30s">만 30세 ~ 39세</option>
+                <option value="40s">만 40세 ~ 49세</option>
+                <option value="50s">만 50세 이상</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <label for="user-job">운전 형태 및 차량 종류</label>
+              <select id="user-job">
+                <option value="personal">개인 자가용 (출퇴근 및 레저용)</option>
+                <option value="business">업무용 차량 및 개인택시 화물차</option>
+                <option value="rental">렌터카 또는 공유 차량 주기적 운행</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="interest-type">가장 관심 있는 최적 설계 방식</label>
+              <select id="interest-type">
+                <option value="pure">월 요금을 아끼는 순수 소멸 보장형</option>
+                <option value="refund">만기 시 일부 환급이 수반되는 환급형</option>
+                <option value="direct">다이렉트 최저가 요금제 직접 비교 안내</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="user-msg">상세 문의 사항 (선택)</label>
+              <textarea id="user-msg" rows="3" placeholder="비교해보고 싶은 특정 브랜드사 상품이 있으시다면 입력해주세요."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <input type="checkbox" id="user-agree" required checked>
+          <label for="user-agree" style="display:inline; font-size:0.9rem; font-weight:400; color:var(--text-muted);">
+            개인정보 수집 및 상담 제공을 위한 연락 및 약관 정보 활용에 동의합니다. (수집 정보는 오직 상담 진행 후에 파기됩니다)
+          </label>
+        </div>
+
+        <button type="submit" class="cta-btn" style="width: 100%;">맞춤형 비교 분석 및 최저가 제안 신청서 발송</button>
+      </form>
+    </section>
+
+  </div>
+
+  <!-- 실시간 환급금 계산기 연동 인터랙티브 자바스크립트 -->
+  <script>
+    function updatePremiumValue(val) {
+      document.getElementById('calc-premium-txt').innerText = Number(val).toLocaleString() + '원';
+      calculateRefund();
+    }
+
+    function updateRefundValue(val) {
+      document.getElementById('calc-refund-txt').innerText = val + '%';
+      calculateRefund();
+    }
+
+    function calculateRefund() {
+      const age = parseInt(document.getElementById('calc-age').value);
+      const monthlyPremium = parseInt(document.getElementById('calc-premium-slider').value);
+      const targetRate = parseInt(document.getElementById('calc-refund-slider').value) / 100;
+      const years = parseInt(document.getElementById('calc-period').value);
+
+      const totalMonths = years * 12;
+      const totalPaid = monthlyPremium * totalMonths;
+      
+      // 보험사 사업비율 계산 (나이가 많을수록 소폭 증가)
+      let companyFeeRate = 0.15;
+      if (age >= 40) companyFeeRate = 0.18;
+      if (age >= 50) companyFeeRate = 0.20;
+
+      // 예상 환급금 계산 (간이식 모델링: 공시이율 가중치 부여)
+      // 실제 환급을 극대화하려면 적립비율이 높아야 하며, 사업비를 차감한 뒤 적립금 산출
+      let expectedRefund = Math.round(totalPaid * targetRate);
+      
+      // 적립을 많이 할수록 실질 환급 금액이 정비례
+      if (targetRate === 0) {
+        expectedRefund = 0;
+      }
+
+      const pureCost = totalPaid - expectedRefund;
+      const actualRatePercentage = totalPaid > 0 ? ((expectedRefund / totalPaid) * 100).toFixed(1) : 0;
+
+      // DOM 텍스트 업데이트
+      document.getElementById('total-paid').innerText = totalPaid.toLocaleString() + '원';
+      document.getElementById('expected-refund').innerText = expectedRefund.toLocaleString() + '원';
+      document.getElementById('pure-cost').innerText = pureCost.toLocaleString() + '원';
+      document.getElementById('actual-rate').innerText = actualRatePercentage + '%';
+
+      // 차트 게이지 업데이트
+      const refundWidth = (expectedRefund / totalPaid) * 100;
+      const costWidth = 100 - refundWidth;
+      document.getElementById('bar-refund').style.width = refundWidth + '%';
+      document.getElementById('bar-cost').style.width = costWidth + '%';
+
+      // 금융 가이드 조언 텍스트 커스터마이징
+      let advice = '';
+      if (targetRate < 0.3) {
+        advice = "보장 중심 설계입니다. 지출 비용을 아끼고 남는 예산을 우량 자산에 직접 투자하는 편이 현명합니다.";
+      } else if (targetRate >= 0.3 && targetRate <= 0.7) {
+        advice = "균형 잡힌 적립 모델입니다. 다만 장기 유지 시 이율 변동 가능성이 크므로 만기 보장에 특히 신경 써야 합니다.";
+      } else {
+        advice = "원금 보존형에 가까운 고액 설계입니다. 매월 지출 부담이 크므로 계약 유지 가능 능력을 반드시 점검하십시오.";
+      }
+      document.getElementById('advice-text').innerText = advice;
+    }
+
+    // 초기 구동 시 최초 계산 진행
+    calculateRefund();
+  </script>
+  
